@@ -1,21 +1,20 @@
-
 # Maintainer: Mary Strodl <ipadlover8322@gmail.com>
-pkgname=3ds-libssh2-git
-pkgver=b69f63b7134fee717fa970c644f92f19b662fba6
+pkgname=3ds-libssh2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='libssh2 is a client-side C library implementing the SSH2 protocol'
 arch=('any')
 url='https://www.libssh2.org/'
 license=('BSD')
 options=(!strip libtool staticlibs)
-source=( "libssh2::git+https://github.com/Mstrodl/libssh2#branch=feature/3ds" )
+source=("${url}/download/libssh2-${pkgver}.tar.gz")
 makedepends=('devkitpro-pkgbuild-helpers')
 depends=('3ds-mbedtls')
-sha256sums=('SKIP')
+sha256sums=('d5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd')
 groups=('3ds-portlibs')
 
 build() {
-  cd libssh2
+  cd "libssh2-${pkgver}"
 
   source /opt/devkitpro/3dsvars.sh
 
@@ -29,11 +28,9 @@ build() {
 }
 
 package() {
-
-  cd libssh2
+  cd "libssh2-${pkgver}"
 
   source /opt/devkitpro/3dsvars.sh
 
   make install DESTDIR="$pkgdir"
-
 }
