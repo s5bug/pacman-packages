@@ -1,7 +1,17 @@
 diff --unified --recursive --text libgit2-1.1.0/src/CMakeLists.txt libgit2-1.1.0-new/src/CMakeLists.txt
 --- libgit2-1.1.0/src/CMakeLists.txt	2020-10-12 11:53:06.000000000 -0700
-+++ libgit2-1.1.0-new/src/CMakeLists.txt	2021-04-12 17:22:44.766947100 -0700
-@@ -292,6 +292,8 @@
++++ libgit2-1.1.0-new/src/CMakeLists.txt	2021-04-12 19:38:53.051059700 -0700
+@@ -66,6 +66,9 @@
+ ELSEIF(CMAKE_SYSTEM_NAME MATCHES "Haiku")
+ 	LIST(APPEND LIBGIT2_LIBS network)
+ 	LIST(APPEND LIBGIT2_PC_LIBS "-lnetwork")
++ELSEIF(N3DS)
++	LIST(APPEND LIBGIT2_LIBS ctru)
++	LIST(APPEND LIBGIT2_PC_LIBS "-lctru")
+ ENDIF()
+ 
+ CHECK_LIBRARY_EXISTS(rt clock_gettime "time.h" NEED_LIBRT)
+@@ -292,6 +295,8 @@
  	target_sources(git2internal PRIVATE ${SRC_OS})
  elseif(AMIGA)
  	target_compile_definitions(git2internal PRIVATE NO_ADDRINFO NO_READDIR_R NO_MMAP)
