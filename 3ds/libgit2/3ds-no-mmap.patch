@@ -1,0 +1,12 @@
+diff --unified --recursive --text libgit2-1.1.0/src/CMakeLists.txt libgit2-1.1.0-new/src/CMakeLists.txt
+--- libgit2-1.1.0/src/CMakeLists.txt	2020-10-12 11:53:06.000000000 -0700
++++ libgit2-1.1.0-new/src/CMakeLists.txt	2021-04-12 17:22:44.766947100 -0700
+@@ -292,6 +292,8 @@
+ 	target_sources(git2internal PRIVATE ${SRC_OS})
+ elseif(AMIGA)
+ 	target_compile_definitions(git2internal PRIVATE NO_ADDRINFO NO_READDIR_R NO_MMAP)
++elseif(N3DS)
++        target_compile_definitions(git2internal PRIVATE NO_MMAP)
+ else()
+ 	file(GLOB SRC_OS unix/*.c unix/*.h)
+ 	list(SORT SRC_OS)
